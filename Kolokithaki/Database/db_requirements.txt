@@ -1,0 +1,3 @@
+Trigger on insert on Ban that calculates the expiration date if the ban is not permanent
+
+Trigger on insert on Rating that re-calculates the recipe's average rating
