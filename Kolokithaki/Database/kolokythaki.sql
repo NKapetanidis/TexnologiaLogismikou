@@ -11,7 +11,7 @@ CREATE TABLE Usr (
     usr_streetNumber INT,
     usr_isBanned BOOL,
     
-    PRIMARY KEY (wrk_email),
+    PRIMARY KEY (usr_email),
     
     UNIQUE (usr_username),
     UNIQUE (usr_password)
