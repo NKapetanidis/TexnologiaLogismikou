@@ -9,7 +9,7 @@ include "header.php"
 
 <body>
 
-  <form action="Recipe.html">
+  <form action="Recipe.php">
     <label for="r_name">Recipe Name:</label><br>
     <input type="text" id="r_name" name="r_name"><br>
     <label for="r_ing">Ingridients:</label><br>

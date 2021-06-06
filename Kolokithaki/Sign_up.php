@@ -9,7 +9,7 @@ include "header.php"
 
 <body>
 
-  <form action="user.html">
+  <form action="user.php">
     <label for="email">Email:</label><br>
     <input type="email" id="fmail" name="email"><br>
     <label for="uid">Username:</label><br>
