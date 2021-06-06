@@ -75,7 +75,7 @@ CREATE TABLE List_Recipes (
 	PRIMARY KEY (lr_list,lr_recipe),
     
     CONSTRAINT lr1
-    FOREIGN KEY (lr_lits) REFERENCES Lst(lst_id)
+    FOREIGN KEY (lr_list) REFERENCES Lst(lst_id)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
     
@@ -170,7 +170,7 @@ CREATE TABLE Ban (
     ON UPDATE CASCADE,
     
     CONSTRAINT ban2
-    FOREIGN KEY (ban_admin) REFERENCES Admn(adm_email)
+    FOREIGN KEY (ban_author) REFERENCES Admn(adm_email)
     ON DELETE CASCADE
     ON UPDATE CASCADE
 
