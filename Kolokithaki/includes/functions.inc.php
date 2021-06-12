@@ -46,7 +46,7 @@ function uidExists($conn, $username, $email ){
     $sql = "SELECT * FROM usr WHERE usr_username  = ? OR usr_email  = ?;";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
-        header("location: ../Sign_up.php?error=stmtfailed");
+        header("location: ../sign_up/index.php?error=stmtfailed");
         exit();
     }
 
@@ -71,7 +71,7 @@ function createUser($conn, $email, $username, $pwd){
     $sql = "INSERT INTO usr (usr_email, usr_username, usr_password) VALUES(?,?,?);";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
-        header("location: ../Sign_up.php?error=stmtfailed");
+        header("location: ../sign_up/index.php?error=stmtfailed");
         exit();
     }
 
@@ -80,7 +80,7 @@ function createUser($conn, $email, $username, $pwd){
     mysqli_stmt_bind_param($stmt,"sss",   $email, $username, $hashedPwd);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../Sign_up.php?error=none");
+    header("location: ../sign_up/index.php?error=none");
     exit();
 }
 
@@ -97,13 +97,13 @@ function emptyIpnutLogin($username, $pwd){
 function loginUser($conn, $username, $pwd){
   $uidExists = uidExists($conn, $username, $username );
   if ($uidExists === false) {
-    header("location:../index.php?error=wronglogins");
+    header("location:../index.php?error=wronglogin");
 
   }
   $pwdHashed = $uidExists["usr_password"];
   $checkPwd = password_verify($pwd, $pwdHashed);
   if ($checkPwd === false) {
-    header("location:../index.php?error=wrongloginf");
+    header("location:../index.php?error=wronglogin");
     exit();
   }
   elseif ($checkPwd === true) {

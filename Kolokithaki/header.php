@@ -1,35 +1,51 @@
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<title>Εγγραφή</title>
+</head>
   <!--Navbar-->
   <header class="header">
     <nav style="z-index: 100" class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="../index.php">Kolokithaki</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="align-items-end">
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Είσοδος
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end row g-3" aria-labelledby="navbarDropdown">
-                  <li>
-                    <form class="form-horizontal" method="post" action="../logged_in/index.php" accept-charset="UTF-8">
-                      <input class="form-control form-control-sm rounded-0" id="name" type="text" name="username" placeholder="Ονομα Χρήστη"><br>
-                      <input class="form-control form-control-sm rounded-0" id="pwd"type="password" name="password" placeholder="Κωδικός"><br>
-					  <div class="col text-center">
-						<input class="btn btn-primary rounded-0" type="submit" name="submit" value="Είσοδος">
-					  </div>
-					</form>
-                  </li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item text-center" href="../sign_up/index.php">Εγγραφή</a></li>
-                </ul>
-              </li>
-            </ul>
+        <?php if (isset($_SESSION["username"])): ?>
+          <a class="navbar-brand" href="../logged_in/index.php">Profile</a>
+          <a class="navbar-brand" href="../upload_recipe/index.php">Recipe Upload</a>
+        <?php else: ?>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="align-items-end">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Είσοδος
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end row g-3" aria-labelledby="navbarDropdown">
+                    <li>
+                      <form class="form-horizontal" method="post" action="../includes/login.inc.php" accept-charset="UTF-8">
+                        <input class="form-control form-control-sm rounded-0" id="uid" type="text" name="uid" placeholder="Ονομα Χρήστη"><br>
+                        <input class="form-control form-control-sm rounded-0" id="pwd"type="password" name="pwd" placeholder="Κωδικός"><br>
+                        <div class="col text-center">
+                                <input class="btn btn-success rounded-0" type="submit" name="submit" value="Είσοδος">
+                        </div>
+                     </form>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-center" href="../sign_up/index.php">Εγγραφή</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        <?php endif; ?>
+
       </div>
     </nav>
 

@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="../css/styles.css">
-<title>Kolokithaki</title>
-</head>
 <?php
 include "../header.php"
 ?>
 
 <body class="bg-light">
-  <form class="d-flex" action="../upload_recipe/index.php">
-      <button class="btn btn-outline-success rounded-0" type="submit">Αναζήτηση</button>
-  </form>
+  <div style="display: flex; justify-content: left; margin-left: 25px; margin-top: 25px;" >
+    <form class="d-flex" action="../upload_recipe/index.php">
+        <button class="btn btn-success rounded-0" type="submit">Δημιουργία νέας συνταγής</button>
+    </form>
+  </div>
+
+
+
   <div class="mycontainer">
     <h1 class="text-center">Νέες συνταγές</h1><br>
     <div class="row justify-content-center align-items-center">
