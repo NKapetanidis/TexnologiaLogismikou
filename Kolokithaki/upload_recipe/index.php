@@ -17,14 +17,12 @@ include "../header.php"
               <input type="text" id="r_name" name="r_name" class="form-control">
             </div>
           </div>
-      <!--
   		<div class="form-group row">
   			<label class="col-form-label col-4">Συστατικά</label>
   			<div class="col-8">
           <input type="text" id="r_ing" class="form-control" name="r_ing">
         </div>
       </div>
-    -->
   		<div class="form-group row">
   			<label class="col-form-label col-4 textarea">Εκτέλεση</label>
   			<div class="col-8">
