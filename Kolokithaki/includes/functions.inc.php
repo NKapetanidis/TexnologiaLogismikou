@@ -1,9 +1,10 @@
- <?php 
-
- function emptyIpnutSignup($name, $email, $username, $pwd,
+ <?php
+ /*https://www.youtube.com/watch?v=gCo6JqGMi30&ab_channel=DaniKrossing
+ */
+ function emptyIpnutSignup($email, $username, $pwd,
  $pwdRepeat ){
      $result;
-     if(empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat) ){
+     if(empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat) ){
       $result = true;
      }else {
         $result = false;
@@ -42,10 +43,10 @@ function pwdMatch($pwd, $pwdRepeat ){
 }
 
 function uidExists($conn, $username, $email ){
-    $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;";
+    $sql = "SELECT * FROM usr WHERE usr_username  = ? OR usr_email  = ?;";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
-        header("location: ../signup.php?error=stmtfailed");
+        header("location: ../Sign_up.php?error=stmtfailed");
         exit();
     }
 
@@ -66,19 +67,66 @@ function uidExists($conn, $username, $email ){
     mysqli_stmt_close($stmt);
 }
 
-function createUser($conn, $name, $email, $username, $pwd){
-    $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES(?,?,?,?);";
+function createUser($conn, $email, $username, $pwd){
+    $sql = "INSERT INTO usr (usr_email, usr_username, usr_password) VALUES(?,?,?);";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
-        header("location: ../signup.php?error=stmtfailed");
+        header("location: ../Sign_up.php?error=stmtfailed");
         exit();
     }
 
-$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt,"ssss",  $name, $email, $username, $hashedPwd);
+    mysqli_stmt_bind_param($stmt,"sss",   $email, $username, $hashedPwd);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../signup.php?error=none");
+    header("location: ../Sign_up.php?error=none");
+    exit();
+}
+
+function emptyIpnutLogin($username, $pwd){
+    $result;
+    if(empty($username) || empty($pwd) ){
+     $result = true;
+    }else {
+       $result = false;
+    }
+    return $result;
+}
+
+function loginUser($conn, $username, $pwd){
+  $uidExists = uidExists($conn, $username, $username );
+  if ($uidExists === false) {
+    header("location:../index.php?error=wronglogins");
+
+  }
+  $pwdHashed = $uidExists["usr_password"];
+  $checkPwd = password_verify($pwd, $pwdHashed);
+  if ($checkPwd === false) {
+    header("location:../index.php?error=wrongloginf");
+    exit();
+  }
+  elseif ($checkPwd === true) {
+    session_start();
+    $_SESSION["username"] =  $uidExists["usr_username"];
+    header("location:../index.php");
+    exit();
+  }
+}
+
+function createRecipe($conn,){
+    $sql = "INSERT INTO usr (usr_email, usr_username, usr_password) VALUES(?,?,?);";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt,$sql)){
+        header("location: ../Sign_up.php?error=stmtfailed");
+        exit();
+    }
+
+    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+
+    mysqli_stmt_bind_param($stmt,"sss",   $email, $username, $hashedPwd);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../Sign_up.php?error=none");
     exit();
 }
