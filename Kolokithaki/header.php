@@ -12,10 +12,12 @@
   <header class="header">
     <nav style="z-index: 100" class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="../index.php">Kolokithaki</a>
+        <a class="navbar-brand" href="../">Kolokithaki</a>
         <?php if (isset($_SESSION["username"])): ?>
-          <a class="navbar-brand" href="../logged_in/index.php">Profile</a>
-          <a class="navbar-brand" href="../upload_recipe/index.php">Recipe Upload</a>
+          <div class="align-items-start">
+          <a class="navbar-brand" href="../profile/">Το προφίλ μου</a>
+          <a class="navbar-brand" href="../upload_recipe/">Δημιουργία νέας συνταγής</a>
+        </div>
         <?php else: ?>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,10 +37,16 @@
                         <div class="col text-center">
                                 <input class="btn btn-success rounded-0" type="submit" name="submit" value="Είσοδος">
                         </div>
+                        <br>
+                        <div>
+                          <?php
+                            include "includes/errorsSign.inc.php"
+                          ?>
+                        </div>
                      </form>
                     </li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item text-center" href="../sign_up/index.php">Εγγραφή</a></li>
+                    <li><a class="dropdown-item text-center" href="../sign_up/">Εγγραφή</a></li>
                   </ul>
                 </li>
               </ul>
@@ -54,7 +62,7 @@
         <ul class="navbar-nav mr-auto ml-auto">
           <li class="nav-item">
             <div class="justify-content-md-center">
-              <form class="d-flex" action="../search/index.php">
+              <form class="d-flex" action="../search/">
                   <input class="form-control rounded-0" type="search" placeholder="Αναζήτηση συνταγής" aria-label="Search">
                   <button class="btn btn-outline-success rounded-0" type="submit">Αναζήτηση</button>
               </form>

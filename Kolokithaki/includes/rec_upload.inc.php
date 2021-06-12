@@ -9,7 +9,7 @@ if (isset($_POST["submit"])) {
   require_once 'functions.inc.php';
 
   if(emptyIpnutLogin($username, $pwd) !== false){
-      header("location: ../Sign_up.php?error=emptyinput");
+      header("location: ../sign_up/index.php?error=emptyinput");
       exit();
   }
 

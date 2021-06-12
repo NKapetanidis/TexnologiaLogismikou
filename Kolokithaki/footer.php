@@ -1,7 +1,7 @@
 <footer class="bg-dark text-center text-white">
   <div class="container p-4">
     <section class="">
-      <form action="index.php">
+      <form action="../">
         <div class="row d-flex justify-content-center">
           <div class="col-auto">
             <p class="pt-2">
@@ -25,6 +25,6 @@
 
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
     © 2021 Copyright:
-    <a class="text-white" href="../index.php">Kolokithaki</a>
+    <a class="text-white" href="../">Kolokithaki</a>
   </div>
 </footer>

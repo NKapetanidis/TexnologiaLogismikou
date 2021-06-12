@@ -3,14 +3,6 @@ include "../header.php"
 ?>
 
 <body class="bg-light">
-  <div style="display: flex; justify-content: left; margin-left: 25px; margin-top: 25px;" >
-    <form class="d-flex" action="../upload_recipe/index.php">
-        <button class="btn btn-success rounded-0" type="submit">Δημιουργία νέας συνταγής</button>
-    </form>
-  </div>
-
-
-
   <div class="mycontainer">
     <h1 class="text-center">Νέες συνταγές</h1><br>
     <div class="row justify-content-center align-items-center">
