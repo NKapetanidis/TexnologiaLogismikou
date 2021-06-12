@@ -1,7 +1,3 @@
-CREATE DATABASE kolokythaki;
-
-USE kolokythaki;
-
 CREATE TABLE Usr (
 	
     usr_email VARCHAR(100) NOT NULL,
@@ -160,6 +156,7 @@ CREATE TABLE Ban (
     ban_id INT NOT NULL AUTO_INCREMENT,
     ban_user VARCHAR(100) NOT NULL,
     ban_author VARCHAR(100) NOT NULL,
+    ban_duration INT,
     ban_expiration DATETIME,
     
     PRIMARY KEY (ban_id),

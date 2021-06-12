@@ -14,7 +14,7 @@ include "../header.php"
           <div class="form-group row">
       			<label class="col-form-label col-4">Όνομα συνταγής</label>
       			<div class="col-8">
-              <input type="text" id="r_name" class="form-control" name="r_name">
+              <input type="text" id="r_name" name="r_name" class="form-control">
             </div>
           </div>
       <!--

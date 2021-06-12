@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="../css/bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/styles.css">
-<title>Εγγραφή</title>
+<title>Κολοκυθάκι</title>
 </head>
   <!--Navbar-->
   <header class="header">
@@ -18,6 +19,7 @@
           <a class="navbar-brand" href="../profile/">Το προφίλ μου</a>
           <a class="navbar-brand" href="../upload_recipe/">Δημιουργία νέας συνταγής</a>
         </div>
+
         <?php else: ?>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

@@ -97,36 +97,46 @@ function emptyIpnutLogin($username, $pwd){
 function loginUser($conn, $username, $pwd){
   $uidExists = uidExists($conn, $username, $username );
   if ($uidExists === false) {
-    header("location:../index.php?error=wronglogin");
+    header("location:../index.php?error=wronglogins");
 
   }
   $pwdHashed = $uidExists["usr_password"];
   $checkPwd = password_verify($pwd, $pwdHashed);
   if ($checkPwd === false) {
-    header("location:../index.php?error=wronglogin");
+    header("location:../index.php?error=wrongloginf");
     exit();
   }
   elseif ($checkPwd === true) {
     session_start();
     $_SESSION["username"] =  $uidExists["usr_username"];
+    $_SESSION["email"] =  $uidExists["usr_email"];
     header("location:../index.php");
     exit();
   }
 }
+function emptyIpnutRec($rname, $desc){
+    $result;
+    if(empty($rname) || empty($desc) ){
+     $result = true;
+    }else {
+       $result = false;
+    }
+    return $result;
+}
 
-function createRecipe($conn,){
-    $sql = "INSERT INTO usr (usr_email, usr_username, usr_password) VALUES(?,?,?);";
+function CreateRecipe($conn,$rname, $author, $desc ){
+    $sql = "INSERT INTO recipe (rec_title, rec_author, rec_content) VALUES(?,?,?);";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
-        header("location: ../Sign_up.php?error=stmtfailed");
+        header("location: ../upload_recipe/index.php?error=stmtfailed");
         exit();
     }
 
-    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt,"sss",   $email, $username, $hashedPwd);
+
+    mysqli_stmt_bind_param($stmt,"sss",  $rname, $author, $desc);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../Sign_up.php?error=none");
+    header("location: ../upload_recipe/index.php?error=none");
     exit();
 }
